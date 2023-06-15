@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: resume-builder_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    networks:
+      - reverseproxy_internal
+    ports:
+      - 8089:80
+      
+networks:
+  reverseproxy_internal:
+    external: true
